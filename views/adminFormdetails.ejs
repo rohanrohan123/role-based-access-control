@@ -1,0 +1,122 @@
+<%- include('./layouts/header') %>
+
+<%  
+
+
+console.log("data_filter12",form_details) 
+console.log("data_filter13",client_data_email) 
+
+// for(i=0;i<result.length;i++){
+//     console.log("resultdata",result[i].email)
+// }
+%>
+
+
+
+
+<h1><span class="goback" onclick="window.history.back()">←</span> Form Details</h1>
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>status</th>
+
+    </thead>
+    <tbody>
+
+
+
+
+
+
+
+
+
+
+
+<% 
+for(i=0;i<client_data_email.length ;i++){
+    var output = form_details.filter(function(x){return x.email==client_data_email[i]}); 
+
+
+    for(j=0;j<output.length;j++){
+        %>
+
+<tr>
+    <td>
+                        <%= output[j].name %>
+                    </td>
+                    <td>
+                        <%= output[j].email %>
+                    </td>
+                    <td>
+                        <%= output[j].phone %>
+                    </td>
+                    <td>
+                        <%= output[j].address %>
+                    </td>
+                   
+     
+
+                    <td>
+        <form
+          action="/admin/update-status"
+          method="post"
+          class="manage-user-form"
+        >
+          <input type="hidden" name="id" value="<%= output[j].id %>" />
+          <select name="status" id="status">
+            <option value="PENDING" <%= output[j].status === 'PENDING' ? 'selected' : '' %> >Pending</option>
+            <option value="APPROVED" <%=output[j].status === 'APPROVED' ? 'selected' : '' %> >Approved</option>
+         
+           
+          </select>
+          <input type="submit" value="update">
+          
+        </form>
+      </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  
+    
+    </tr>
+  
+        
+    <% }
+   
+}
+
+
+%>
+
+
+  
+</tbody>
+</table>
+<%- include('./layouts/footer') %>

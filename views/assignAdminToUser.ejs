@@ -1,0 +1,42 @@
+<%- include ('layouts/header') %>
+<h1 class="table">Assign Admin To Users</h1>
+
+<table class="table">
+  <thead>
+    <th>id</th>
+    <th>email</th>
+    <th>admin email</th>
+  </thead>
+  <tbody>
+    <% data_Client.forEach(userClient => { %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><a href="/superadmin/user/<%= userClient.id %>"><%= userClient.email %></a></td>
+      <td>
+        <form
+          action="/superadmin/assign-user"
+          method="post"
+          class="manage-user-form"
+        >
+          <input type="hidden" name="id" value="<%= userClient.id %>" />
+          <select name="adminemail" id="adminemail">
+            <option value="Null" > Select Option</option>
+            <% for(var i=0; i < data_Admin.length; i++) { %>
+               
+                  <option value="<%= data_Admin[i].email %>" <%= data_Admin[i].email === userClient.adminemail ? 'selected' : '' %> ><%= data_Admin[i].email %> </option>
+                 
+              
+             <% } %>
+          </select>
+          <input type="submit" value="update">
+          
+        </form>
+      </td>
+
+     
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include ('layouts/footer') %>

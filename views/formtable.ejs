@@ -1,0 +1,38 @@
+<%- include('./layouts/header') %>
+
+<%  
+
+
+console.log("data_filter12",data_filter) 
+
+
+%>
+<h1><span class="goback" onclick="window.history.back()">←</span> Form Details</h1>
+
+<div class="profile">
+
+    
+  <div>
+    <p class="title">Name</p>
+    <p class="subtitle"><%= data_filter[0].name %></p>
+  </div>
+  <div>
+    <p class="title">Email</p>
+    <p class="subtitle"><%= data_filter[0].email %></p>
+  </div>
+  <div>
+    <p class="title">Phone</p>
+    <p class="subtitle"><%= data_filter[0].phone %></p>
+  </div>
+  <div>
+    <p class="title">Address</p>
+    <p class="subtitle"><%= data_filter[0].address %></p>
+  </div>
+  <div>
+    <p class="title">Role</p>
+    <p class="subtitle"><%= data_filter[0].status %></p>
+  </div>
+  
+  
+</div>
+<%- include('./layouts/footer') %>

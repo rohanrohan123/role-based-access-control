@@ -1,0 +1,26 @@
+<nav>
+  <h2>Dashboard</h2>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <% if (user) { %>
+    <li><a href="/user/profile">Profile</a></li>
+   
+
+    <% if (user.role==='CLIENT'){%>
+      <li><a href="/fillform/form">Form</a></li>
+    <li><a href="/fillform/formtable"> STATUS</a></li>
+
+    <% } %> <% if (user.role === 'ADMIN') { %>
+    <li><a href="/admin/form-details">Form Details</a></li>
+    <li><a href="/admin/users-details">User Details</a></li>
+    <% } %> <% if (user.role === 'SUPERADMIN') { %>
+    <li><a href="/superadmin/users">Manage All</a></li>
+    <li><a href="/superadmin/assignuser">Assign Admin To User</a></li>
+    <% } %>
+    <li><a href="/auth/logout">Logout</a></li>
+    <% } else { %>
+    <li><a href="/auth/register">Register</a></li>
+    <li><a href="/auth/login">Login</a></li>
+    <% } %>
+  </ul>
+</nav>
